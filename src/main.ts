@@ -1,3 +1,5 @@
-export const hi = () => {
-  console.log('Hello from BakaJS!');
-};
+export class BakalariClient {
+  public constructor() {
+    console.log('Initialized!');
+  }
+}
