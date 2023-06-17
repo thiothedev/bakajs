@@ -1,20 +1,34 @@
+import fetch from 'node-fetch';
+
 import type { BakalariEndpoint, BakalariAuthInfo } from './typings/auth';
+import type { AuthResponse } from './typings/api';
 
 export class BakalariClient {
   private endpoint: BakalariEndpoint | null;
-  private username: BakalariAuthInfo['username'] | null;
-  private password: BakalariAuthInfo['password'] | null;
+  private auth: AuthResponse | null = null;
 
   public constructor() {
     this.endpoint = null;
-    this.username = null;
-    this.password = null;
   }
 
-  public login(authInfo: BakalariAuthInfo): void {
-    this.username = authInfo.username;
-    this.password = authInfo.password;
+  public setEndpoint(endpoint: string) {
+    this.endpoint = endpoint;
+  }
 
-    console.log('Logged in!');
+  public async login(authInfo: BakalariAuthInfo): Promise<boolean> {
+    try {
+      const res = await fetch(`${this.endpoint}/api/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `client_id=ANDR&grant_type=password&username=${authInfo.username}&password=${authInfo.password}`,
+      });
+      this.auth = (await res.json()) as AuthResponse;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+    return true;
   }
 }

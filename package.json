@@ -2,6 +2,7 @@
   "name": "bakapi-js",
   "version": "0.1.0",
   "author": "thiothedev <thiothedev@proton.me>",
+  "homepage": "https://github.com/thiothedev/bakapi-js",
   "scripts": {
     "build": "tsc -p .",
     "lint": "eslint './src/**/*.ts'",
