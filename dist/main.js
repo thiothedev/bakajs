@@ -1,7 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.hi = void 0;
-const hi = () => {
-    console.log('Hello from BakaJS!');
-};
-exports.hi = hi;
+exports.BakalariClient = void 0;
+class BakalariClient {
+    constructor() {
+        this.endpoint = null;
+        this.username = null;
+        this.password = null;
+    }
+    login(authInfo) {
+        this.username = authInfo.username;
+        this.password = authInfo.password;
+        console.log('Logged in!');
+    }
+}
+exports.BakalariClient = BakalariClient;
