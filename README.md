@@ -1,1 +1,1 @@
-# BakaJS
+# BakalariJS
