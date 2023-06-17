@@ -1,0 +1,6 @@
+{
+  "name": "bakapi-js",
+  "version": "0.1.0",
+  "author": "thiothedev <thiothedev@proton.me>",
+  "main": "src/main.js"
+}
